@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # 采集 Spring Boot Actuator 暴露的 Prometheus 指标
+  - job_name: "partner-match-app"
+    metrics_path: "/actuator/prometheus"
+    scrape_interval: 10s
+    static_configs:
+      - targets: ["app:8083"]
+        labels:
+          application: "partner-match-backend"
